@@ -1,0 +1,8 @@
+{
+    "lib": {
+        "www": {
+            "url": "/Users/tim/angular/famous/famous.tw/FamousCube/app",
+            "link": true
+        }
+    }
+}
