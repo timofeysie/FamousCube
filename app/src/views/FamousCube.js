@@ -27,340 +27,142 @@ define(function(require, exports, module) {
         var cube;
         var trans;
         var dimensions = [50, 50, 50];
-        /**
-         * F
-         */
         var famousMod = [];
-        for (i = 0; i < 10; i++) {
-            trans = new TransitionableTransform();
-            mod = new Modifier({
-                transform: trans
-            });
-            cube = new Cube({ dimensions: dimensions });
-            _child = new View();
-            _child.add(mod).add(cube);
-            _root.add(_child);
 
-            if (i < 5) {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(50, 50 * i + 50, 0)
-                });
-            } else if (i >= 5 && i < 8) {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(100 + (i - 5) * 50, 50, 0)
-                });
-            } else {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(100 + (i - 8) * 50, 150, 0)
-                });
-            }
-        }
+        var increment = 25; // the size between squres.
+        var position = 0; // the position in the word
+        var spacer = 25; // space in between letters
+        var position = -150; // the x position of each letter
+        var letter_width = 175; // most letters are 175 or 200 in width
 
         /**
-         * A
+         * C
          */
-        for (i = 0; i < 11; i++) {
+        var letter = [[2,0],[4,0],[1,2],[5,2],[0,4],[1,6],[5,6],[2,8],[4,8]];
+        //var letter = [[50,50],[50,100],[50,150],[50,200],[50,250],[100,50],[150,50],[200,50],[100,150],[150,150]];
+        for (i = 0; i < letter.length; i++) {
             trans = new TransitionableTransform();
-            mod = new Modifier({
-                transform: trans
-            });
+            mod = new Modifier({transform: trans});
             cube = new Cube({ dimensions: dimensions });
             _child = new View();
             _child.add(mod).add(cube);
             _root.add(_child);
-
-            if (i < 4) {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(300 - i * 25, 50 * i + 50, 0)
-                });
-            } else if (i >= 4 && i < 7) {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(325 + (i - 4) * 25, 50 * (i - 4) + 100, 0)
-                });
-            } else if (i >= 7 && i < 9) {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(275 + (i - 7) * 50, 200, 0)
-                });
-            } else {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(225 + (i - 9) * 150, 250, 0)
-                });
-            }
+            famousMod.push({cube: cube,mod: mod,trans: trans,singleAnimate: true, final: 
+            Transform.translate(((letter[i][0]*increment)+position),(letter[i][1]*increment), 0)
+            });
         }
+        letter_width = 175;
+        position = position + letter_width + spacer;
 
         /**
-         * M
-         */
-        for (i = 0; i < 17; i++) {
+        * U
+        */
+        var letter = [[0,0],[0,2],[0,4],[0,6],[6,0],[6,2],[6,4],[6,6],[1,8],[3,8],[5,8]];
+        for (i = 0; i < letter.length; i++) {
             trans = new TransitionableTransform();
-            mod = new Modifier({
-                transform: trans
-            });
+            mod = new Modifier({transform: trans});
             cube = new Cube({ dimensions: dimensions });
             _child = new View();
             _child.add(mod).add(cube);
             _root.add(_child);
-
-            if (i < 5) {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(450, 50 * i + 50, 0)
-                });
-            } else if (i >= 5 && i < 10) {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(700, 50 * (i - 5) + 50, 0)
-                });
-            } else if (i >= 10 && i < 14) {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(500 + (i - 10) * 25, 50 * (i - 10) + 75, 0)
-                });
-            } else {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(650 - (i - 14) * 25, 50 * (i - 14) + 75, 0)
-                });
-            }
+            famousMod.push({cube: cube,mod: mod,trans: trans,singleAnimate: true, final: 
+            Transform.translate(((letter[i][0]*increment)+position),(letter[i][1]*increment), 0)
+            });
         }
+        letter_width = 200;
+        position = position + letter_width + spacer;
+
+        /**
+        * R
+        */
+        var letter = [[0,0],[2,0],[4,0],[0,2],[5,2],[0,4],[2,4],[4,4],[0,6],[5,6],[0,8],[6,8]];
+        for (i = 0; i < letter.length; i++) {
+            trans = new TransitionableTransform();
+            mod = new Modifier({transform: trans});
+            cube = new Cube({ dimensions: dimensions });
+            _child = new View();
+            _child.add(mod).add(cube);
+            _root.add(_child);
+            famousMod.push({cube: cube,mod: mod,trans: trans,singleAnimate: true, final: 
+            Transform.translate(((letter[i][0]*increment)+position),(letter[i][1]*increment), 0)
+            });
+        }
+        letter_width = 200;
+        position = position + letter_width + spacer;
+
+        /**
+         * C
+         */
+        var letter = [[2,0],[4,0],[1,2],[5,2],[0,4],[1,6],[5,6],[2,8],[4,8]];
+        //var letter = [[50,50],[50,100],[50,150],[50,200],[50,250],[100,50],[150,50],[200,50],[100,150],[150,150]];
+        for (i = 0; i < letter.length; i++) {
+            trans = new TransitionableTransform();
+            mod = new Modifier({transform: trans});
+            cube = new Cube({ dimensions: dimensions });
+            _child = new View();
+            _child.add(mod).add(cube);
+            _root.add(_child);
+            famousMod.push({cube: cube,mod: mod,trans: trans,singleAnimate: true, final: 
+            Transform.translate(((letter[i][0]*increment)+position),(letter[i][1]*increment), 0)
+            });
+        }
+        letter_width = 175;
+        position = position + letter_width + spacer;
+
+        /**
+         * H
+         */
+        var letter = [[0,0],[6,0],[0,2],[6,2],[0,4],[2,4],[4,4],[6,4],[0,6],[6,6],[0,8],[6,8]];
+        //var letter = [[50,50],[50,100],[50,150],[50,200],[50,250],[100,50],[150,50],[200,50],[100,150],[150,150]];
+        for (i = 0; i < letter.length; i++) {
+            trans = new TransitionableTransform();
+            mod = new Modifier({transform: trans});
+            cube = new Cube({ dimensions: dimensions });
+            _child = new View();
+            _child.add(mod).add(cube);
+            _root.add(_child);
+            famousMod.push({cube: cube,mod: mod,trans: trans,singleAnimate: true, final: 
+            Transform.translate(((letter[i][0]*increment)+position),(letter[i][1]*increment), 0)
+            });
+        }
+        letter_width = 200;
+        position = position + letter_width + spacer;
+
         /**
          * O
          */
-        for (i = 0; i < 12; i++) {
+        var letter = [[2,0],[4,0],[2,8],[4,8],[0,1],[0,3],[0,5],[0,7],[6,1],[6,3],[6,5],[6,7]];
+        for (i = 0; i < letter.length; i++) {
             trans = new TransitionableTransform();
-            mod = new Modifier({
-                transform: trans
-            });
+            mod = new Modifier({transform: trans});
             cube = new Cube({ dimensions: dimensions });
             _child = new View();
             _child.add(mod).add(cube);
             _root.add(_child);
-
-            if (i < 2) {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(825 + i * 50, 50, 0)
-                });
-            } else if (i >= 2 && i < 4) {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(825 + (i - 2) * 50, 250, 0)
-                });
-            } else if (i >= 4 && i < 8) {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(775, 75 + (i - 4) * 50, 0)
-                });
-            } else {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(925, 75 + (i - 8) * 50, 0)
-                });
-            }
-        }
-        /**
-         * DOT
-         */
-        trans = new TransitionableTransform();
-        mod = new Modifier({
-            transform: trans
-        });
-        cube = new Cube({ dimensions: dimensions });
-        _child = new View();
-        _child.add(mod).add(cube);
-        _root.add(_child);
-
-        famousMod.push({
-            cube: cube,
-            mod: mod,
-            trans: trans,
-            singleAnimate: true,
-            final: Transform.translate(1000, 250, 0)
-        });
-
-        /**
-         * U
-         */
-        for (i = 0; i < 11; i++) {
-            trans = new TransitionableTransform();
-            mod = new Modifier({
-                transform: trans
+            famousMod.push({cube: cube,mod: mod,trans: trans,singleAnimate: true, final: 
+            Transform.translate(((letter[i][0]*increment)+position),(letter[i][1]*increment), 0)
             });
+        }
+        letter_width = 225;
+        position = position + letter_width + spacer;
+
+        /**
+         * D
+         */
+        var letter = [[0,0],[2,0],[4,0],[0,2],[5,2],[0,4],[5,4],[0,6],[5,6],[0,8],[2,8],[4,8]];
+        for (i = 0; i < letter.length; i++) {
+            trans = new TransitionableTransform();
+            mod = new Modifier({transform: trans});
             cube = new Cube({ dimensions: dimensions });
             _child = new View();
             _child.add(mod).add(cube);
             _root.add(_child);
-
-            if (i < 4) {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(1075, 50 + i * 50, 0)
-                });
-            } else if (i >= 4 && i < 8) {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(1225, 50 + (i - 4) * 50, 0)
-                });
-            } else {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(1100 + (i - 8) * 50, 250, 0)
-                });
-            }
-        }
-        /**
-         * S
-         */
-        for (i = 0; i < 10; i++) {
-            trans = new TransitionableTransform();
-            mod = new Modifier({
-                transform: trans
+            famousMod.push({cube: cube,mod: mod,trans: trans,singleAnimate: true, final: 
+            Transform.translate(((letter[i][0]*increment)+position),(letter[i][1]*increment), 0)
             });
-            cube = new Cube({ dimensions: dimensions });
-            _child = new View();
-            _child.add(mod).add(cube);
-            _root.add(_child);
-
-            if (i < 2) {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(1350 + i * 50, 50, 0)
-                });
-            } else if (i >= 2 && i < 4) {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(1350 + (i - 2) * 50, 250, 0)
-                });
-            } else if (i >= 4 && i < 6) {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(1350 + (i - 4) * 50, 150, 0)
-                });
-            } else if (i >= 6 && i < 8) {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(1300, 75 + (i - 6) * 50, 0)
-                });
-            } else {
-                famousMod.push({
-                    cube: cube,
-                    mod: mod,
-                    trans: trans,
-                    singleAnimate: true,
-                    final: Transform.translate(1450, 175 + (i - 8) * 50, 0)
-                });
-            }
         }
-        trans = new TransitionableTransform();
-        mod = new Modifier({
-            transform: trans
-        });
-        cube = new Cube({ dimensions: dimensions });
-        _child = new View();
-        _child.add(mod).add(cube);
-        _root.add(_child);
-
-        famousMod.push({
-            cube: cube,
-            mod: mod,
-            trans: trans,
-            singleAnimate: true,
-            final: Transform.translate(1300, 225, 0)
-        });
-
-        trans = new TransitionableTransform();
-        mod = new Modifier({
-            transform: trans
-        });
-        cube = new Cube({ dimensions: dimensions });
-        _child = new View();
-        _child.add(mod).add(cube);
-        _root.add(_child);
-
-        famousMod.push({
-            cube: cube,
-            mod: mod,
-            trans: trans,
-            singleAnimate: true,
-            final: Transform.translate(1450, 75, 0)
-        });
-
-        famousMod.sort(function(a, b) {
-            return Math.round(Math.random()) - 0.5;
-        });
+        letter_width = 175;
+        position = position + letter_width + spacer;
 
         var singleAnimate = function(target, sfinal, duration, direction) {
             sfinal = sfinal === undefined ? Transform.translate(1500 * Math.random(), 1500 * Math.random(), 500 * Math.random()) : sfinal;
