@@ -10,7 +10,7 @@
   "devDependencies": {
     "docco": "0.6.x",
     "phantomjs": "1.9.0-1",
-    "uglify-js": "2.4.x"
+    "uglify-js": "3.6.x"
   },
   "scripts": {
     "test": "phantomjs test/vendor/runner.js test/index.html?noglobals=true",
